@@ -11,5 +11,5 @@ document
         .filter(item => item.codigo == '2143')
         .reduce((total, item) => total + item.valor, 0)
     )
-    .then(total => console.log(total))
+    .then(console.log)
     .catch(console.log);
