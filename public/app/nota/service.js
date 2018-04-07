@@ -22,8 +22,15 @@ export const notasService = {
 
     sumItems(code) {
 
+        // utilizando o partialize que foi importado
         const filterItems = partialize(filterItemsByCode, code);
 
-        return this.listAll().then(sumItems(code));
+        return this.listAll().then(notas =>
+            sumItemsValue(
+                filterItems(
+                    getItemsFromNotas(notas)
+                )
+            )
+        );
     }
 }
