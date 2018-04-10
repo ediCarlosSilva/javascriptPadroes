@@ -13,8 +13,9 @@ export const takeUntil = (times, fn) =>
     () => times-- > 0 && fn();
 
 export const debounceTime = (milliseconds, fn) => {
-
+    let timer = 0;
     return () => {
-        setTimeout(fn, milliseconds);
+        clearTimeout(timer);
+        timer = setTimeout(fn, milliseconds);
     };
 }
