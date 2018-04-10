@@ -10,4 +10,11 @@ export const pipe = (...fns) => value =>
         fn(previusValue), value);
 
 export const takeUntil = (times, fn) =>
-    () => times-- > 0 && fn()
+    () => times-- > 0 && fn();
+
+export const debounceTime = (milliseconds, fn) => {
+
+    return () => {
+        setTimeout(fn, milliseconds);
+    };
+}

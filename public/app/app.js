@@ -4,17 +4,14 @@ import './utils/array-helpers.js';
 import { notasService as service } from './nota/service.js';
 import { takeUntil } from './utils/operators.js';
 
-const showMessage = () => console.log('Opa!');
-
-const operation = takeUntil(3, showMessage);
-let counter = 10;
-while (counter--) operation();
+const operation1 = takeUntil(3, () =>
+    service
+    .sumItems('2143')
+    .then(console.log)
+    .catch(console.log)
+);
 
 
 document
     .querySelector('#myButton')
-    .onclick = () =>
-    service
-    .sumItems('2143')
-    .then(console.log)
-    .catch(console.log);
+    .onclick = operation1;
