@@ -1,4 +1,4 @@
-import { log, timeoutPromise } from './utils/promise-helpers.js';
+import { log, timeoutPromise, delay } from './utils/promise-helpers.js';
 import './utils/array-helpers.js';
 // importa dando um apelido para o artefato importado
 import { notasService as service } from './nota/service.js';
@@ -11,6 +11,7 @@ const operations = pipe(
 
 const action = operations(() =>
     timeoutPromise(200, service.sumItems('2143'))
+    .then(delay(5000))
     .then(console.log)
     .catch(console.log)
 );
